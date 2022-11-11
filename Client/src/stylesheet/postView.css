@@ -1,0 +1,176 @@
+.postView-container
+{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 30px 200px 30px 200px;
+}
+
+.posts-container
+{
+    width: 80%;
+    margin: 10px;
+}
+
+.post
+{
+    margin-bottom: 30px;
+    border: 1px solid rgb(197, 196, 196);
+    border-radius: 5px;
+}
+
+.post-owner-details
+{
+    display: grid;
+    grid-template-columns: 92% 8%;
+}
+
+.name_h3
+{
+    margin: 10px 0px 0px 35px;
+}
+
+.location_p
+{
+    margin: 5px 0px 0px 35px;
+    margin-top: 0px;
+}
+
+.more-logo
+{
+    width: 100%;
+    height: 70px;
+    /* padding-right: 20px; */
+    box-sizing: border-box;
+}
+
+.logo
+{
+    width: 100%;
+    height: 100%;
+}
+
+.post-image
+{
+    margin-bottom: 15px;
+}
+
+.post-features
+{
+    display: grid;
+    grid-template-columns: 7% 7% 55% 25%;
+}
+
+.heart-logo, .forward-logo
+{
+    height: 30px;
+    padding-left: 20px;
+}
+
+.likes_p
+{
+    margin-top: 0px;
+    padding-left: 20px;
+}
+
+.location_p , .date_p , .likes_p
+{
+    font-weight: bold;
+    color: rgb(156, 156, 156);
+}
+
+.date_p
+{
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.description
+{
+    border-top: 1px solid rgb(197, 196, 196);
+}
+
+.description_h2
+{
+    padding-left: 20px;
+}
+
+
+/* @media screen and (max-width : 540px) {
+    .post-features
+    {
+        display: grid;
+        grid-template-columns: 12% 12% 41% 35%;
+    }
+
+    .date_p
+    {
+        font-size: 11px;
+    }
+}
+
+@media screen and (min-width : 541px) and (max-width : 650px) {
+
+    .post-owner-details
+    {
+        display: grid;
+        grid-template-columns: 90% 10%;
+    }
+
+    .more-logo
+    {
+        padding-right: 20px;
+    }
+
+    .post-features
+    {
+        display: grid;
+        grid-template-columns: 9% 9% 57% 25%;
+    }
+
+    .date_p
+    {
+        font-size: 13px;
+    }
+}
+
+
+@media screen and (min-width : 651px) and (max-width : 870px) {
+
+    
+    .post-owner-details
+    {
+        display: grid;
+        grid-template-columns: 93% 7%;
+        background-color: aquamarine;
+    }
+    
+    .post-features
+    {
+        display: grid;
+        grid-template-columns: 7% 7% 56% 30%;
+    }
+
+}
+
+@media screen and (min-width : 871px) and (max-width : 1000px) {
+    
+    .post-owner-details
+    {
+        display: grid;
+        grid-template-columns: 96% 6%;
+        background-color: aquamarine;
+    }
+
+    .more-logo
+    {
+        padding-right: 20px;
+    }
+    
+    .post-features
+    {
+        display: grid;
+        grid-template-columns: 6% 6% 68% 20%;
+    }
+}
+ */

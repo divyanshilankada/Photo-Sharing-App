@@ -1,0 +1,105 @@
+header
+{
+    display: grid;
+    grid-template-columns: 7% 86% 7%;
+    box-sizing: border-box;
+    background-color: rgb(221, 219, 219);
+}
+
+.insta-logo , .camera-logo
+{
+    height: 70px;
+    width: 82%;
+    box-sizing: border-box;
+    padding: 17px;
+}
+
+.camera-logo
+{
+    padding: 7px;
+}
+
+.logo
+{
+    height: 100%;
+    width: 100%;
+}
+
+.title
+{
+    box-sizing: border-box;
+}
+
+.header_h1
+{
+    text-align: left;
+    font: normal normal normal 64px/71px Palatino;
+    letter-spacing: 0px;
+    color: #006238;
+    opacity: 1;
+
+    /* padding: 20px 0px 0px 15px; */
+    margin: 0px;
+    font-size: 30px;
+}
+
+/* 
+@media screen and (max-width : 380px) {
+
+    header
+    {
+        display: grid;
+        grid-template-columns: 10% 80% 10%;
+        box-sizing: border-box;
+    }
+
+    .insta-logo
+    {
+        padding: 1px 0px 1px 2px;
+    }
+
+    .camera-logo
+    {
+        padding: 3px 3px 3px 0px;
+    }
+    
+    .header_h1
+    {
+        padding: 20px 0px 0px 15px;
+        margin: 0px;
+        font-size: 25px;
+    }
+}
+
+
+@media screen and (min-width : 381px) and (max-width : 550px) {
+
+    
+    .insta-logo
+    {
+        padding: 1px 0px 1px 3px;
+    }
+
+    .camera-logo
+    {
+        padding: 4px 4px 4px 0px;
+    }
+    
+}
+
+@media screen and (min-width : 551px) and (max-width : 768px) {
+    
+    .insta-logo , .camera-logo
+    {
+        padding: 5px;
+    }
+
+    .camera-logo
+    {
+        padding: 8px;
+    }
+}
+ */
+
+
+
