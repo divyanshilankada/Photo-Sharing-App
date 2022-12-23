@@ -20,19 +20,19 @@ function AddPost()
             userData.append("PostImage", e.target.PostImage.files[0]);
             userData.append("likes", Math.ceil(Math.random() * 100));
 
-            fetch(`https://instaclone-application-api.herokuapp.com/post`, {
+            fetch(`https://insta-clone-backend-app.onrender.com/post`, {
               method: "POST",
               body: userData,
             })
               .then((res) => res.json())
               .then((result) => {
                 console.log(result);
-                window.location.reload(true);
+                //window.location.reload(true);
+                navigate("/instaClone");
               });
 
-            navigate("/instaClone");
-          
-       
+              alert("Uploading")
+
     }
 
 

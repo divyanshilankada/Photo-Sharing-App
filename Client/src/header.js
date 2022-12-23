@@ -2,7 +2,7 @@ import React from "react";
 import './stylesheet/header.css';
 import logo from './images/icon@2x.png';
 import { Link } from "react-router-dom";
-import cam from './images/icons8-add-camera-100.png'
+import cam from './images/cam.png'
 
 
 
@@ -22,7 +22,7 @@ const HeaderFunction = () => {
             <Link className="header camera-logo" to="/addPost">
             {/* <Link className="link-button" >Enter</Link> */}
                 <img src={cam}
-                         alt="cameraLogo" className="logo"></img>         
+                         alt="cameraLogo" className="logo cam_logo"></img>         
             </Link>
         </header>
     );

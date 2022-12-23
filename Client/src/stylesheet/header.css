@@ -1,7 +1,7 @@
 header
 {
     display: grid;
-    grid-template-columns: 7% 86% 7%;
+    grid-template-columns: 7% 87% 6%;
     box-sizing: border-box;
     background-color: rgb(221, 219, 219);
 }
@@ -9,20 +9,23 @@ header
 .insta-logo , .camera-logo
 {
     height: 70px;
-    width: 82%;
+    width: 100%;
     box-sizing: border-box;
-    padding: 17px;
-}
-
-.camera-logo
-{
-    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo
 {
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.cam_logo
+{
+    height: auto;
+    width: auto;
 }
 
 .title

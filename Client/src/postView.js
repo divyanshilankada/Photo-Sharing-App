@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './stylesheet/postView.css';
-import more from './images/icons8-view-more-48.png';
-import heart from './images/icons8-favorite-48.png';
-import nav from './images/icons8-near-me-48.png';
-
-const ServerUrl = "https://instaclone-application-api.herokuapp.com";
+import more from './images/more.png';
+import heart from './images/heart.png';
+import nav from './images/nav.png';
 
 
 export default function PostView() {
@@ -12,46 +10,36 @@ export default function PostView() {
     const [postDetails, setPostDetails] = useState([]);
 
     useEffect(() => {
-        fetch('https://instaclone-application-api.herokuapp.com/post')
+        fetch('https://insta-clone-backend-app.onrender.com/post')
                     .then(response => response.json())
                     .then(data => setPostDetails(data.message))          
-    },[])
+    })
+
+    console.log(postDetails);
 
     function dateMonth (date)
     {
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", 
-                        "October", "November", "December"];
-        
-        const dateArr = date.split("/");
-        const swapArr = swap(dateArr[0], dateArr[1]);
-        dateArr[0] = swapArr[0];
-        dateArr[1] = swapArr[1];
-
-        date = dateArr.join("/");
-
-        const d = new Date(date);
-        const resultDate = monthNames[d.getMonth()];
-
-
-        dateArr[1] = resultDate;
-
-        const result = dateArr.join(" ");
-        return result; 
+        let d = date.split("T");
+        return d[0];
     }
 
-    function swap(a,b)
-    {
-        return [b,a];
+    function toBase64(dataArr){
+        return btoa(dataArr.reduce((data, val)=> {
+             return data + String.fromCharCode(val);
+        }, ''));
     }
 
     return (
         <>
     {postDetails.length > 0 ? (<main className='postView-container'>
         <div className='posts-container'>
-            {postDetails.reverse().map( (post, i) => 
-                
-                <section className='post' key={i}>
+            {postDetails.reverse().map( (post, i) => {
 
+                const base64string=toBase64(post.PostImage.data.data);
+                console.log(base64string);
+
+                return (
+                <section className='post' key={i}>
                     <div className='post-owner-details'>
                         <div className='name-location box'>
                             <h2 className='name_h3'>{post.name}</h2>
@@ -64,8 +52,7 @@ export default function PostView() {
                     </div>
                     
                     <div className='post-image box'>
-                        <img className='logo' src={`${ServerUrl}/Images/${post.PostImage}`}
-                    alt={`${post.PostImage}`}></img>
+                        <img className='logos' src={`data:image/png;base64,${base64string}`} alt='post'></img>
                     </div>
 
                     <div className='post-features box'>
@@ -77,7 +64,7 @@ export default function PostView() {
                         </div>
                         <div></div>
                         <div className='date box'>
-                            <p className='date_p'>{post.date}</p>
+                            <p className='date_p'>{dateMonth(post.date)}</p>
                         </div>
                     </div>
 
@@ -88,6 +75,7 @@ export default function PostView() {
                         <h2 className='description_h2'>{post.description}</h2>
                     </div>
                 </section>
+            )}
             )}
         </div>
     </main>) : (

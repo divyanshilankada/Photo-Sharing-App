@@ -5,6 +5,11 @@ const Post = require('./models/post');
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const cors = require("cors"); 
+var fs = require('fs');
+var path = require('path');
+const multer = require('multer');
+require('dotenv').config()
+
 
 const PORT = process.env.PORT || 8080;
 
@@ -12,7 +17,19 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(fileUpload());
+app.use("/uploads",express.static("uploads"))
+//app.use(fileUpload());
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname + '-' + Date.now());
+    }
+});
+//   const maxSize=50*1024;
+var upload = multer({ storage: storage });
 
 
 app.get("/post", async (req,res) => {
@@ -37,29 +54,36 @@ app.get("/post", async (req,res) => {
     }
 });
 
-app.post("/post", async (req, res) => {
+app.post("/post",upload.single('PostImage'), async (req, res) => {
 
     try{
         
-        console.log(req.files);
-        const file = req.files.PostImage;
+        console.log(req.file.fi);
+        // const file = req.files.PostImage;
 
-        file.mv("./Images/" + file.name, (err) => {
-            if (err) {
-                res.send(JSON.stringify(err));
-            } 
-            else {
-                console.log("Image Uploaded Sucessfully");
-            }
-        });
+        // file.mv("./Images/" + file.name, (err) => {
+        //     if (err) {
+        //         res.send(JSON.stringify(err));
+        //     } 
+        //     else {
+        //         console.log("Image Uploaded Sucessfully");
+        //     }
+        // });
+
 
         const data = await Post.create({
             name: req.body.name,
             location: req.body.location,
             description: req.body.description,
             likes: req.body.likes,
-            PostImage: req.files.PostImage.name
+            //PostImage: req.files.PostImage.name
+            PostImage:{
+                data: fs.readFileSync('uploads/' + req.file.filename),
+                contentType: 'image/png'
+            }
         });
+
+        console.log(data);
 
         res.status(200).json({
             status: "Sucess",

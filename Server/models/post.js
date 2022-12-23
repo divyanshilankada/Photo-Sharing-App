@@ -6,7 +6,10 @@ const PostShema = new Schema({
     location: String,
     likes: Number,
     description: String,
-    PostImage: { type: String, required: true },
+    PostImage:{
+        data:Buffer,
+       contentType:String
+    },
     date: { type: Date, default: Date.now }
 
 });
