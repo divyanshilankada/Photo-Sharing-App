@@ -1,35 +1,45 @@
 import React from "react";
 import HeaderFunction from './header';
 import { useNavigate } from "react-router-dom";
-import './stylesheet/addPost.css'
+import './stylesheet/addPost.css';
+import axios from 'axios';
 
 
 function AddPost()
 {
 
     const navigate = useNavigate();
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
     
-        const userData = new FormData();
+        //const userData = new FormData();
+        const uploadImage = new FormData();
 
-        //console.log(e.target.PostImage);
-            userData.append("description", e.target.description.value);
-            userData.append("name", e.target.name.value);
-            userData.append("location", e.target.location.value);
-            userData.append("PostImage", e.target.PostImage.files[0]);
-            userData.append("likes", Math.ceil(Math.random() * 100));
+        uploadImage.append('file', e.target.PostImage.files[0]);
+        uploadImage.append('upload_preset','ml_default');
 
-            fetch(`https://insta-clone-backend-app.onrender.com/post`, {
-              method: "POST",
-              body: userData,
-            })
-              .then((res) => res.json())
+        const res = await fetch('https://api.cloudinary.com/v1_1/de2r40gjo/image/upload', {
+            method:"POST",
+            body:uploadImage
+        })
+
+        const file = await res.json();
+
+        console.log(file.secure_url);
+
+        const userData = {
+            "description": e.target.description.value,
+            "name":e.target.name.value,
+            "location": e.target.location.value,
+            "PostImage": file.secure_url,
+            "likes":Math.ceil(Math.random() * 100)};
+
+            axios.post(`https://insta-clone-backend-app.onrender.com/post`,userData)
               .then((result) => {
                 console.log(result);
                 //window.location.reload(true);
                 navigate("/instaClone");
-              });
+              }).catch((err) => console.log(err));
 
               alert("Uploading")
 

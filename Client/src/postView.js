@@ -13,7 +13,7 @@ export default function PostView() {
         fetch('https://insta-clone-backend-app.onrender.com/post')
                     .then(response => response.json())
                     .then(data => setPostDetails(data.message))          
-    })
+    },[])
 
     console.log(postDetails);
 
@@ -35,8 +35,8 @@ export default function PostView() {
         <div className='posts-container'>
             {postDetails.reverse().map( (post, i) => {
 
-                const base64string=toBase64(post.PostImage.data.data);
-                console.log(base64string);
+                //const base64string=toBase64(post.PostImage.data.data);
+                //console.log(post.PostView);
 
                 return (
                 <section className='post' key={i}>
@@ -52,7 +52,7 @@ export default function PostView() {
                     </div>
                     
                     <div className='post-image box'>
-                        <img className='logos' src={`data:image/png;base64,${base64string}`} alt='post'></img>
+                        <img className='logos' src={`${post.PostImage}`} alt='post'></img>
                     </div>
 
                     <div className='post-features box'>
